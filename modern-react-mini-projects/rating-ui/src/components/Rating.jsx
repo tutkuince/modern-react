@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Star from "./Star";
+import Modal from "./Modal";
 
 const Rating = ({ heading = "Rate Your Experience", color = "gold" }) => {
   const [rating, setRating] = useState(0);
@@ -14,7 +15,8 @@ const Rating = ({ heading = "Rate Your Experience", color = "gold" }) => {
     }
   };
 
-  const closeModel = () => {
+  // Close modal and reset UI
+  const closeModal = () => {
     setSubmitted(false);
     setRating(0);
     setHover(0);
@@ -45,20 +47,7 @@ const Rating = ({ heading = "Rate Your Experience", color = "gold" }) => {
       >
         Submit
       </button>
-      {/* Modal */}{" "}
-      {submitted && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <h2>Thank You</h2>
-            <p>
-              You rated us {rating} star{rating > 1 ? "s" : ""}
-            </p>
-            <button className="close-btn" onClick={closeModel}>
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      <Modal isOpen={submitted} onClose={closeModal} rating={rating} />
     </div>
   );
 };
