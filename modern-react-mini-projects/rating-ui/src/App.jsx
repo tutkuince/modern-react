@@ -3,7 +3,16 @@ import Rating from "./componenets/Rating";
 const App = () => {
   return (
     <div>
-      <Rating />
+      <Rating
+        heading="Ho do you feel about React?"
+        feedbackMessages={[
+          "Hate it",
+          "Disliked it",
+          "Meh",
+          "Like it",
+          "Love it",
+        ]}
+      />
     </div>
   );
 };
